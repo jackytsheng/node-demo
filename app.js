@@ -3,9 +3,13 @@ const mongoose = require('mongoose');
 require('dotenv/config');
 const app = express();
 const bodyParser = require("body-parser");
+const message = require("./message/receive");
 
 //Middleware
 app.use(bodyParser.json());
+
+//Receive message from RabbitMQ
+message();
 
 //Import route
 const postRoute = require('./routes/posts');
